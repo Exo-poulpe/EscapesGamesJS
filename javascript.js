@@ -86,9 +86,14 @@ function GetHexFromList($listBin)
 
 }
 
+
 function Win()
 {
+  var Address = "http://10.5.51.32";
   localStorage.clear();
-  alert("(:");
-  window.Location = "EscapeGame/end.php";
+  alert("Gagné");
+  //header("Location: " + Address + "EscapeGame/end.php");
+  //window.Location = "Location: " + Address + "EscapeGame/end.php";
+  window.location.replace(Address + "/EscapeGame/end.php");
+  window.location.replace("http://localhost/");
 }

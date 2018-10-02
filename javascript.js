@@ -1,13 +1,12 @@
 
 InitializeArray();
 var listBin = GetItem('listBin');
-//listBin = ListSetter();
+
 function GetItem(name){
   return localStorage.getItem(name).split(",");
 }
 
-function InitializeArray()
-{
+function InitializeArray(){
   var char = '0';
   var result = [];
   for (var i=0; i < 8; i++) {
@@ -16,8 +15,7 @@ function InitializeArray()
   localStorage.setItem('listBin', result);
 }
 
-function ListSetter(value)
-{
+function ListSetter(value){
   listBin.push(value);
   while (listBin.length > 8)
   {
@@ -25,24 +23,18 @@ function ListSetter(value)
   }
   Save(listBin);
   UpdateView(listBin);
-  //console.log(listBin);
   return listBin;
 }
 
-function Save(listBin)
-{
+function Save(listBin){
   localStorage.setItem('listBin', listBin);
 }
 
-function Update()
-{
-
+function Update(){
   listBin = GetItem('listBin');
-
 }
 
-function ResetArray()
-{
+function ResetArray(){
   for (var i = 0; i < listBin.length; i++) {
     listBin[i] = "0";
   }
@@ -52,7 +44,6 @@ function ResetArray()
 
 function UpdateView(listBin){
   for (var i = 0; i < listBin.length; i++) {
-    //console.log('value'+i);
     document.getElementById('value'+i).innerHTML = (listBin[i]);
   }
   var bin = "";
@@ -67,33 +58,24 @@ function UpdateView(listBin){
     document.getElementById('hex'+i).innerHTML = hex[i];
   }
 
-  //console.log(document.getElementById('sol0').innerHTML);
   if (hex[0] == document.getElementById('sol0').innerHTML && hex[1] == document.getElementById('sol1').innerHTML ) {
     Win();
   }
-
 }
 
-function GetHexFromList($listBin)
-{
-
+function GetHexFromList($listBin){
   $bin[0] = substr(implode("",$listBin),0,4);
   $bin[1] = substr(implode("",$listBin),4,4);
   $hex[0] = strtoupper(dechex(bindec($bin[0])));
   $hex[1] = strtoupper(dechex(bindec($bin[1])));
   return $hex;
-  //var_dump($hex);
-
 }
 
 
-function Win()
-{
+function Win(){
   var Address = "http://10.5.51.32";
   localStorage.clear();
   alert("Gagné");
-  //header("Location: " + Address + "EscapeGame/end.php");
-  //window.Location = "Location: " + Address + "EscapeGame/end.php";
   window.location.replace(Address + "/EscapeGame/end.php");
   window.location.replace("http://localhost/");
 }

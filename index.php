@@ -1,14 +1,7 @@
 <?php
 include("Soluce.php");
-//session_destroy();
-//unset($_SESSION['listBin']);
-//if (!isset($_SESSION['listBin'])) {
-//  header("Location: serveur.php");
-//}
-  //$listBin = $_SESSION['listBin'];
-  //$hex = $_SESSION['hex'];
 $solution = getSolutionJSON();
-//var_dump($listBin);
+
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date dans le passé
 ?>

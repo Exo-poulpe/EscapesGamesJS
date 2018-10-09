@@ -1,19 +1,7 @@
 
-InitializeArray();
-var listBin = GetItem('listBin');
-
-function GetItem(name){
-  return localStorage.getItem(name).split(",");
-}
-
-function InitializeArray(){
-  var char = '0';
-  var result = [];
-  for (var i=0; i < 8; i++) {
-    result.push(char);
-  }
-  localStorage.setItem('listBin', result);
-}
+//InitializeArray();
+var listBin = [0,0,0,0,0,0,0,0];// initialisation de la table des nsolutions binaires
+var Addr = "10.5.51.32";
 
 function ListSetter(value){
   listBin.push(value);
@@ -21,36 +9,28 @@ function ListSetter(value){
   {
     listBin.shift(listBin);
   }
-  Save(listBin);
   UpdateView(listBin);
   return listBin;
-}
-
-function Save(listBin){
-  localStorage.setItem('listBin', listBin);
-}
-
-function Update(){
-  listBin = GetItem('listBin');
 }
 
 function ResetArray(){
   for (var i = 0; i < listBin.length; i++) {
     listBin[i] = "0";
   }
-  Save(listBin);
   UpdateView(listBin);
 }
 
 function UpdateView(listBin){
+  var bin = "";
+  var hex = [];
   for (var i = 0; i < listBin.length; i++) {
     document.getElementById('value'+i).innerHTML = (listBin[i]);
   }
-  var bin = "";
+
   for (var i = 0; i < listBin.length; i++) {
     bin += listBin[i];
   }
-  var hex = [];
+
   hex[0] = parseInt(bin.substring(0,4),2).toString(16).toUpperCase();
   hex[1] = parseInt(bin.substring(4),2).toString(16).toUpperCase();
 
@@ -73,9 +53,9 @@ function GetHexFromList($listBin){
 
 
 function Win(){
-  var Address = "http://10.5.51.32";
+  var Address = "http://" + Addr;
   localStorage.clear();
   alert("Gagné");
-  window.location.replace(Address + "/EscapeGame/end.php");
-  window.location.replace("http://localhost/");
+  window.location.replace(Address + "/escapeGame/end.php");
+  window.open("http://localhost/");
 }

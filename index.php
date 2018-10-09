@@ -12,7 +12,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date dans le passé
   <title>Bouton</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 
-  <script>var Addr = JSON.parse('<?= json_encode(ADDR) ?>');</script>
+  <script>var ADDR = JSON.parse('<?= json_encode(ADDR) ?>');</script>
   <script src="./javascript.js"></script>
 </head>
 
